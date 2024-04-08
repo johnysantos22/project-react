@@ -1,18 +1,20 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import Home from './containers/Home';
-import Users from './containers/Users';
+import Home from './containers/Home'
+import Pedido from './containers/Pedido'
 
-function AppRoutes() {
-  return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/usuarios" element={<Users />} />
-      </Routes>
-    </Router>
-  );
+function MyRoutes() {
+
+    return (
+        <Router>
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/pedido" element={<Pedido />} />
+            </Routes>
+        </Router>
+    )
+
 }
 
-export default AppRoutes;
+export default MyRoutes

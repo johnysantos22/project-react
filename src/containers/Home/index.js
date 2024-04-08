@@ -1,62 +1,54 @@
-import React, { useRef, useState } from "react";
+import React, { useState, useRef } from "react";
+import Axios from "axios";
 
-import axios from 'axios';
-import Buger2 from '../../assets/burger 2.png';
-import Arrow from '../../assets/arrow.svg';
+import Home from "../../assets/Home.png"
 
-import {
-  Container,
-  H1,
-  ContainerItens,
-  Image,
-  ImputLabel,
-  Imput,
-  Button,
-} from './style'
-  ;
+import { Container, Image, ContianerItens, H1, InputLabel, Input, Button } from "./styles"
+import { useNavigate } from "react-router-dom";
 
+function App() {
 
-const App = () => {
-  const [users, setUsers] = useState([]);
-  const inputName = useRef();
-  const inputAge = useRef();
+    const [order, setOrders] = useState([])
+    const navigate = useNavigate()
+    const inputPedido = useRef()
+    const inputName = useRef()
 
+    const minhaUrl = "https://https://primeiro-projeto-node-6kpplstsm-johny-santos-projects.vercel.app"
 
-  async function addNewUser() {
-    const { data: newUser } = await axios.post("https://primeiro-projeto-node-js-7n95.vercel.app/users", {
-      name: inputName.current.value,
-      age: inputAge.current.value
-    });
+    async function addNewOrder() {
+        const { data: newOrder } = await Axios.post(`${minhaUrl}/order`, {
+            pedido: inputPedido.current.value,
+            name: inputName.current.value
+        })
 
+        setOrders([...order, newOrder])
 
-    setUsers([...users, newUser]);
-  };
+        navigate("/pedido")
 
+    }
 
-  return (
+   
 
-    <Container>
-      <Image alt="logo-Imagem" src={Buger2} />
-      <ContainerItens>
+    return (
+        <Container>
+            <Image alt="logo-home" src={Home} />
+            <ContianerItens>
+                <H1>Faça eu pedido!</H1>
 
-        <H1>Faça seu Pedido</H1>
+                <InputLabel>Pedido</InputLabel>
+                <Input ref={inputPedido} placeholder="Pedido" />
 
-        <ImputLabel>Pedido</ImputLabel>
-        <Imput placeholder="1 Coca-Cola, 1 X Salada" ref={inputName}>
-        </Imput>
+                <InputLabel>Nome do Cliente</InputLabel>
+                <Input ref={inputName} placeholder="Nome do Cliente" />
 
-        <ImputLabel>Nome do Cliente</ImputLabel>
-        <Imput placeholder="Steve Jobs" ref={inputAge}>
-        </Imput>
+                <Button onClick={addNewOrder}>Novo Pedido</Button>
 
-        <Button to="/usuarios" onClick={addNewUser}>
-          Cadastrar <img alt="seta" src={Arrow}
-          /></Button>
+                
+            </ContianerItens>
+        </Container>
+    )
 
-      </ContainerItens>
-    </Container>
-
-  )
 }
 
-export default App;
+
+export default App
