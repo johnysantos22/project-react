@@ -13,7 +13,7 @@ function App() {
     const inputPedido = useRef()
     const inputName = useRef()
 
-    const minhaUrl = "https://primeiro-projeto-node-js.vercel.app/"
+    const minhaUrl = "https://primeiro-projeto-node-js.vercel.app"
 
     async function addNewOrder() {
         const { data: newOrder } = await Axios.post(`${minhaUrl}/order`, {
