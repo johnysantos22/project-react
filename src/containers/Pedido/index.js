@@ -12,7 +12,7 @@ function Oders() {
     const [orders, setOrders] = useState([])
     const navigate = useNavigate()
 
-    const minhaUrl = "https://primeiro-projeto-node-6kpplstsm-johny-santos-projects.vercel.app"
+    const minhaUrl = "https://primeiro-projeto-node-js.vercel.app/"
 
     useEffect(() => {
         async function fetchOrders() {

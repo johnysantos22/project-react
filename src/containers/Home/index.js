@@ -13,7 +13,7 @@ function App() {
     const inputPedido = useRef()
     const inputName = useRef()
 
-    const minhaUrl = "https://https://primeiro-projeto-node-6kpplstsm-johny-santos-projects.vercel.app"
+    const minhaUrl = "https://primeiro-projeto-node-js.vercel.app/"
 
     async function addNewOrder() {
         const { data: newOrder } = await Axios.post(`${minhaUrl}/order`, {
@@ -27,7 +27,7 @@ function App() {
 
     }
 
-   
+
 
     return (
         <Container>
@@ -41,9 +41,8 @@ function App() {
                 <InputLabel>Nome do Cliente</InputLabel>
                 <Input ref={inputName} placeholder="Nome do Cliente" />
 
-                <Button onClick={addNewOrder}>Novo Pedido</Button>
+                <Button onClick={addNewOrder }>Novo Pedido</Button>
 
-                
             </ContianerItens>
         </Container>
     )
